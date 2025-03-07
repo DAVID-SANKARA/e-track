@@ -1,8 +1,11 @@
+import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
     <div>
+      <Navbar />
       <div className="flex items-center justify-center flex-col py-10 w-full">
         <div>
           <div className="flex flex-col">
@@ -16,15 +19,17 @@ export default function Home() {
           </div>
           <div className="flex justify-center items-center">
             <Link
-              href={""}
+              href={"/sign-in"}
               className="btn btn-sm md:btn-md btn-outline btn-accent"
             >
+              
               Se connecter
             </Link>
             <Link
-              href={""}
+              href={"/sign-up"}
               className="btn btn-sm md:btn-md ml-2 btn-accent"
             >
+            
               S'indcrire
             </Link>
           </div>
