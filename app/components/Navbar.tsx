@@ -1,11 +1,19 @@
 "use client"
 import { UserButton, useUser } from '@clerk/nextjs'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { checkAndAddUser } from '../actions'
 
 
 const Navbar= () => {
   const { isLoaded, isSignedIn, user}=useUser()
+
+  useEffect(() => {
+    if (user?.primaryEmailAddress?.emailAddress) {
+      checkAndAddUser(user?.primaryEmailAddress?.emailAddress)
+    }
+  }, [user])
+
   return (
     <div className='bg-base-200/30 px-5 md:px-[10%] py-4'>
       {isLoaded && 
@@ -16,7 +24,7 @@ const Navbar= () => {
               e <span className="text-accent">.Trank</span>
             </div>
             <div className="md:flex hidden">
-              <Link href={""} className='btn'>
+              <Link href={"/budgets"} className='btn'>
                 Mes budget
               </Link>
               <Link href={""} className='btn mx-4'>
@@ -30,7 +38,7 @@ const Navbar= () => {
           </div>
 
           <div className="md:hidden flex mt-2 justify-center">
-              <Link href={""} className='btn btn-sm'>
+              <Link href={"/budgets"} className='btn btn-sm'>
                 Mes budget
               </Link>
               <Link href={""} className='btn mx-4 btn -sm'>
