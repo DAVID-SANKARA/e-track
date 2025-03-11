@@ -20,8 +20,8 @@ const Navbar= () => {
         (isSignedIn ? (
           <>
           <div className="flex justify-between items-center">
-            <div className="flex text-2xl items-center font-bold">
-              e <span className="text-accent">.Trank</span>
+            <div className="flex text-3xl items-center font-bold">
+              e <span className="text-info">.Trank</span>
             </div>
             <div className="md:flex hidden">
               <Link href={"/budgets"} className='btn'>
@@ -41,7 +41,7 @@ const Navbar= () => {
               <Link href={"/budgets"} className='btn btn-sm'>
                 Mes budget
               </Link>
-              <Link href={""} className='btn mx-4 btn -sm'>
+              <Link href={""} className='btn mx-4 btn-sm'>
                 Tableau de bord
                 </Link>
               <Link href={""} className='btn btn-sm'>
