@@ -1,5 +1,5 @@
 "use client"
-import { getTransactionsByBudgetId,addTransactionsToBudget, deleteBudget, deleteTransaction  } from '@/app/actions'
+import { getTrasactionsByBudgetId,addTransactionToBudget, deleteBudget, deleteTransaction  } from '@/app/actions'
 import BudgetItem from '@/app/components/BudgetItem'
 import Notification from '@/app/components/Notification'
 import Wrapper from '@/app/components/Wrapper'
@@ -19,7 +19,7 @@ const page = ({params}: {params: Promise<{budgetid : string}>}) => {
   async function fetchBudgetData(budgetId: string){
     try {
       if (budgetId) {
-        const budgetData = await getTransactionsByBudgetId(budgetId)
+        const budgetData = await getTrasactionsByBudgetId(budgetId)
         setBudget(budgetData)
       }
       
@@ -52,7 +52,7 @@ const page = ({params}: {params: Promise<{budgetid : string}>}) => {
       if (isNaN(amountNumber) || amountNumber <= 0 ) {
         throw new Error("Le montant doit être un nombre positif");
       }
-      const newTransaction = await addTransactionsToBudget(budgetId, amountNumber, description)
+      const newTransaction = await addTransactionToBudget(budgetId, amountNumber, description)
       setNotification('transaction ajoutée avec succes') 
       fetchBudgetData(budgetId)
       setAmount('')
